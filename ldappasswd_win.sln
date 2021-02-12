@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ldappasswd_win", "ldappasswd_win\ldappasswd_win.csproj", "{C926F046-E6F1-4AFE-AE62-4937B6FE64DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C926F046-E6F1-4AFE-AE62-4937B6FE64DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C926F046-E6F1-4AFE-AE62-4937B6FE64DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C926F046-E6F1-4AFE-AE62-4937B6FE64DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C926F046-E6F1-4AFE-AE62-4937B6FE64DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CA92766-8062-43A0-A819-018A32039741}
+	EndGlobalSection
+EndGlobal
