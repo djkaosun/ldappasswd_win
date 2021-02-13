@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.DirectoryServices.Protocols;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Windows.Media;
-using LdapPasswdLib;
 
-namespace ldappasswd_win
+namespace LdapPasswdLib
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
@@ -147,12 +147,20 @@ namespace ldappasswd_win
                 {
                     LdapPasswordChanger.ChangePassword(viewModel.DistinguishedName, viewModel.OldPassword, viewModel.NewPassword, serverString, viewModel.IsTls);
 
-                    viewModel.Message = "Complete successfully.";
+                    viewModel.Message = "Complete successfully.\nYour password is changed.";
                     viewModel.MessageColor = Brushes.DodgerBlue;
                 }
                 catch(Exception e)
                 {
-                    viewModel.Message = "(" + e.GetType().Name + ")\n" + e.Message;
+                    if(e is LdapException ldapException)
+                    {
+                        viewModel.Message = "(" + ldapException.GetType().Name + ":" + ldapException.ErrorCode + ")\n"
+                                + ldapException.Message;
+                        if (!String.IsNullOrEmpty(ldapException.ServerErrorMessage)) viewModel.Message += "\n" + ldapException.ServerErrorMessage;
+                    }
+                    else {
+                        viewModel.Message = "(" + e.GetType().Name + ")\n" + e.Message;
+                    }
                     viewModel.MessageColor = Brushes.Red;
                     viewModel.CanExecute = true;
                 }
@@ -182,6 +190,8 @@ namespace ldappasswd_win
             this.PropertyChanged += PropertyChangedEventHandler;
             ConfirmPassword = String.Empty;
         }
+
+        #region Event Handlers
 
         private void PropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
         {
@@ -224,13 +234,17 @@ namespace ldappasswd_win
                     }
                     else
                     {
-                        Message = "Input validation is OK.";
+                        Message = "Passed the input validation check.";
                         MessageColor = Brushes.DodgerBlue;
                         CanExecute = true;
                     }
                     break;
             }
         }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// TCP ポート指定がされていないとき、明示的にポート指定を追加する。
@@ -245,5 +259,7 @@ namespace ldappasswd_win
             }
             else return ldapServer;
         }
+
+        #endregion
     }
 }
