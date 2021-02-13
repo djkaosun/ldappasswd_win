@@ -10,12 +10,12 @@ using mylib.CLI;
 
 namespace LdapPasswdLib
 {
-    class ldappasswd
+    class LdapPasswd
     {
         /// <summary>
         /// コンフィグのファイル名。
         /// </summary>
-        public const string CONFIG_FILE_NAME = "ldappasswd_config.json";
+        public const string CONFIG_FILE_NAME = "LdapPasswd_config.json";
 
         /// <summary>
         /// LDAPS のポート番号
@@ -56,7 +56,7 @@ namespace LdapPasswdLib
             catch (Exception e)
             {
                 // e のメッセージにはコマンドのヘルプが格納されている。
-                Console.Error.WriteLine(e);
+                Console.Error.WriteLine(e.Message);
                 Console.Write(PRESS_ENTER_KEY_MESSAGE);
                 Console.ReadLine();
                 Environment.Exit(-1);

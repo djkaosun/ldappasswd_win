@@ -1,13 +1,20 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Windows.Media;
 using LdapPasswdLib;
 
-namespace LdapPasswdLib
+namespace ldappasswd_win
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// LDAPS のポート番号
+        /// </summary>
+        public const int LDAP_PORT = 389;
+        public const int LDAPS_PORT = 636;
+
         #region Properties for Binding
 
         private string _Server;
@@ -135,9 +142,10 @@ namespace LdapPasswdLib
             public void Execute(object parameter)
             {
                 viewModel.CanExecute = false;
+                var serverString = ServerPortSpecify(viewModel.Server, viewModel.IsTls);
                 try
                 {
-                    LdapPasswordChanger.ChangePassword(viewModel.DistinguishedName, viewModel.OldPassword, viewModel.NewPassword, viewModel.Server, viewModel.IsTls);
+                    LdapPasswordChanger.ChangePassword(viewModel.DistinguishedName, viewModel.OldPassword, viewModel.NewPassword, serverString, viewModel.IsTls);
 
                     viewModel.Message = "Complete successfully.";
                     viewModel.MessageColor = Brushes.DodgerBlue;
@@ -222,6 +230,20 @@ namespace LdapPasswdLib
                     }
                     break;
             }
+        }
+
+        /// <summary>
+        /// TCP ポート指定がされていないとき、明示的にポート指定を追加する。
+        /// </summary>
+        /// <param name="ldapServer">LDAP サーバー指定</param>
+        private static string ServerPortSpecify(string ldapServer, bool isTls)
+        {
+            if (!Regex.IsMatch(ldapServer, ":[1-9][0-9]*$"))
+            {
+                if (isTls) return ldapServer + ":" + LDAPS_PORT;
+                else return ldapServer + ":" + LDAP_PORT;
+            }
+            else return ldapServer;
         }
     }
 }

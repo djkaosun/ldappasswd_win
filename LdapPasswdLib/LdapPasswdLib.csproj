@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>ldappasswd</AssemblyName>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>LdapPasswd</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,9 +13,6 @@
   <ItemGroup>
     <Reference Include="CLIUtilities">
       <HintPath>..\..\CLIUtilities\CLIUtilities\bin\Release\netstandard2.1\netstandard2.1\CLIUtilities.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore">
-      <HintPath>..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\5.0.0\ref\net5.0\PresentationCore.dll</HintPath>
     </Reference>
   </ItemGroup>
 
