@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ldappasswd_win"
         mc:Ignorable="d"
-        Title="LdapPasswdChanger" Height="250" Width="300">
+        Title="LdapPasswdChanger" Height="250" Width="410">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
