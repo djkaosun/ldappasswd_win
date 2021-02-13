@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ldappasswd_win", "ldappasswd_win\ldappasswd_win.csproj", "{C926F046-E6F1-4AFE-AE62-4937B6FE64DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LdapPasswd", "ldappasswd_win\LdapPasswd.csproj", "{C926F046-E6F1-4AFE-AE62-4937B6FE64DD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LdapPasswdLib", "LdapPasswdLib\LdapPasswdLib.csproj", "{02CBAD83-F5FD-451E-9240-A6414E8C856F}"
 EndProject
