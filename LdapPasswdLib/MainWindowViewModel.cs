@@ -147,7 +147,7 @@ namespace LdapPasswdLib
                 {
                     LdapPasswordChanger.ChangePassword(viewModel.DistinguishedName, viewModel.OldPassword, viewModel.NewPassword, serverString, viewModel.IsTls);
 
-                    viewModel.Message = "Complete successfully.\nYour password has been changed.";
+                    viewModel.Message = "Completed successfully.\nYour password has been changed.";
                     viewModel.MessageColor = Brushes.DodgerBlue;
                 }
                 catch(Exception e)
