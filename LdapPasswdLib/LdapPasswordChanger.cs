@@ -54,7 +54,12 @@ namespace LdapPasswdLib
                 ldapConnection.Bind();
 
                 // パスワード変更要求を送信
-                ldapConnection.SendRequest(modifyPasswdRequest);
+                var modifyPasswdResponse = (ExtendedResponse)ldapConnection.SendRequest(modifyPasswdRequest);
+
+                // 応答が「成功」か確認
+                if (modifyPasswdResponse.ResultCode != ResultCode.Success)
+                        throw new Exception("Could not change password. ("
+                                + Enum.GetName(typeof(ResultCode), modifyPasswdResponse.ResultCode) + ")");
             }
             finally
             {
